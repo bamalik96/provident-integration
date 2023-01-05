@@ -93,6 +93,9 @@ class WebServicePropertyController extends Controller
             /***
              * Property Add
              */
+            $bedrooms = getValueRemoveExtraSpace($general_listing_information, 'bedrooms');
+            $fullbathrooms = getValueRemoveExtraSpace($general_listing_information, 'fullbathrooms');
+
             $property =  Property::updateOrCreate([
                 'property_code' => getValueRemoveExtraSpace($value, 'id')
             ], [
@@ -105,8 +108,8 @@ class WebServicePropertyController extends Controller
                 'property_number' => getValueRemoveExtraSpace($general_listing_information, 'property'),
                 'totalarea' => getValueRemoveExtraSpace($general_listing_information, 'totalarea'),
                 'description' => getValue($general_listing_information, 'description'),
-                'fullbathrooms' => getValueRemoveExtraSpace($general_listing_information, 'fullbathrooms'),
-                'bedrooms' => getValueRemoveExtraSpace($general_listing_information, 'bedrooms'),
+                'fullbathrooms' => $fullbathrooms ? $fullbathrooms : 0,
+                'bedrooms' => $bedrooms ? $bedrooms : 0,
                 'address' => getValueRemoveExtraSpace($address_information, 'address'),
                 'latitude' => getValueRemoveExtraSpace($address_information, 'latitude'),
                 'longitude' => getValueRemoveExtraSpace($address_information, 'longitude'),
