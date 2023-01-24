@@ -16,3 +16,19 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->get('api/v1/properties', [
+    'as' => 'properties', 'uses' => 'WebServicePropertyController@index'
+]);
+
+$router->get('api/v1/google-reviews', [
+    'as' => 'google-reviews', 'uses' => 'GoogleReviewsController@index'
+]);
+
+$router->get('api/v1/google-reviews/callback', [
+    'as' => 'google-reviews-callback', 'uses' => 'GoogleReviewsController@callBackGoogle'
+]);
+
+
+
+$router->get('instagram/auth/callback', '\Dymantic\InstagramFeed\AccessTokenController@handleRedirect');
