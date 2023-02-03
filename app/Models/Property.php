@@ -39,11 +39,13 @@ class Property extends Model
         'agent_id',
         'images',
         'property_finder_region',
-        'community_id'
+        'community_id',
+        'view360'
     ];
 
     protected $casts = [
         'images' => 'array',
+        'view360' => 'array'
     ];
 
     public function sluggable(): array

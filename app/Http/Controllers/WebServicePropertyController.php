@@ -38,7 +38,7 @@ class WebServicePropertyController extends Controller
         $response =  json_encode($response, JSON_PRETTY_PRINT);
         $data = json_decode($response, TRUE); // convert the JSON-encoded string to a PHP variable
 
-       return  $data = ($data['listing']);
+         $data = ($data['listing']);
 
         foreach ($data as $key => $value) {
 
@@ -120,10 +120,10 @@ class WebServicePropertyController extends Controller
                 'city_id' => getValueRemoveExtraSpace($city, 'id'),
                 'property_type_id' => getValueRemoveExtraSpace($property_type, 'id'),
                 'agent_id' => $agent->id,
-                'images' => getValue($value, 'listing_media.images'),
+                'images' => getValue($value, 'listing_media.images.image'),
                 'property_finder_region' => getValueRemoveExtraSpace($value, 'custom_fields.pba_uaefields__propertyfinder_region'),
                 'community_id' => $community->id,
-                'view360' =>getValue($value, 'listing_media.view360')
+                'view360' =>getValue($value, 'listing_media.view360.view360')
 
             ]);
 
